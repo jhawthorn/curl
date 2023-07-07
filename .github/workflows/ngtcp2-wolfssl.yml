@@ -151,7 +151,7 @@ jobs:
 
     # Disabled for now, we see spurious SSL_connect() errors when talking
     # http/1.1 to apache and this, so far, is not reproducable in local testing
-    #- run: pytest -v
+    #- run: pytest -v -r ap
     #  name: 'run pytest'
     #  env:
     #    TFLAGS: "${{ matrix.build.tflags }}"
