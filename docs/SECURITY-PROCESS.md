@@ -269,3 +269,9 @@ timeout value or otherwise) are not considered security problems. Applications
 are supposed to already handle situations when the transfer loop legitimately
 consumes 100% CPU time, so while a prolonged such busy-loop is a nasty bug, we
 do not consider it a security problem.
+
+## Saving files
+
+A user of curl or libcurl on multi-user systems **should not** keep critical
+files in directories in which you allow curl or libcurl to save or update
+files. curl cannot completely protect such files against attacks.
