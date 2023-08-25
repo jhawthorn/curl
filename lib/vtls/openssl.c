@@ -1884,6 +1884,12 @@ static void ossl_close(struct Curl_cfilter *cf, struct Curl_easy *data)
       (void)SSL_read(backend->handle, buf, (int)sizeof(buf));
 
       (void)SSL_shutdown(backend->handle);
+
+      /* read or shutdown may push an error to the SSL error queue. Since we
+       * don't check return codes we should clear it to avoid affecting other
+       * callers. */
+      ERR_clear_error();
+
       SSL_set_connect_state(backend->handle);
     }
 
